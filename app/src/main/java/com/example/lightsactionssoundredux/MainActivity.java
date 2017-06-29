@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.support.v4.app.NotificationCompatSideChannelService;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.app.NotificationCompat;
@@ -34,14 +35,41 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickLightsActionSound2(View view) {
+
+
         NotificationCompat.Builder notificationBuilder = (android.support.v7.app.NotificationCompat.Builder) new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle("LightsActionSoundRedux")
                 .setContentText("Lights, Action & Sound");
+
         Intent activityIntent = new Intent(this,MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,activityIntent,0);
+
         notificationBuilder.addAction(android.R.drawable.ic_dialog_email, "Email",pendingIntent);
         NotificationManager notificationManager =(NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationBuilder.build());
+    }
+
+
+    public void clickLightsActionSound3(View view) {
+        NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.ic_launcher);
+        NotificationCompat.InboxStyle inboxStyle = new NotificationCompat.InboxStyle();
+        inboxStyle.setBigContentTitle("Big Content Title")
+                .addLine("Line 1")
+                .addLine("Line 2")
+                .addLine("Line 2")
+                .addLine("Line 2")
+                .addLine("Line 2");
+        notificationBuilder.setStyle(inboxStyle);
+
+        NotificationManager notificationManager =(NotificationManager) this.getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notificationBuilder.build());
+
+    }
+
+
+    public void clickLightsActionSound4(View view) {
+
     }
 }
